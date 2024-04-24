@@ -134,24 +134,25 @@ d3.addEventListener("touchend", stopDrawing);
 
 // Función para comenzar el dibujo
 function startDrawing(event) {
-    console.log('entre a startDrawing')
+    i=0
     isDrawing = true;
     const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
     const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
     lienzo3.beginPath();
     lienzo3.moveTo(x, y);
-    console.log('entre a startDrawing', x, y)
+    
 }
 
 // Función para dibujar la línea
 function draw(event) {
     if (isDrawing) {
+        color = getColorArcoiris(i)
         const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
         const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
         lienzo3.lineTo(x, y);
         lienzo3.strokeStyle = color;
         lienzo3.stroke();
-        console.log('entre a isDrawing', x, y)
+        i++
     }
 }
 

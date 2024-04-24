@@ -51,12 +51,14 @@ var teclas = {
     LEFT: 37,
     RIGHT:39,
 }
-document.addEventListener('keydown', dibujarTeclado);
 var posX = 100
 var posY = 100
 var paso = 5
 var direccionX = 0
 var direccionY = 0
+
+document.addEventListener('keydown', dibujarTeclado);
+
 
 function dibujarTeclado(evento){
     console.log("entre a pintar con teclado")
@@ -91,16 +93,16 @@ function dibujarTeclado(evento){
 var d3 = document.getElementById("dibujo_con_mouse_touch");
 var lienzo3 = d3.getContext("2d");
 
-var posX = 100
-var posY = 100
+var posX3 = 100
+var posY3 = 100
 var mousePresionado = false;
 var direccionX = 0
 var direccionY = 0
 
 // Función para iniciar el dibujo cuando se presiona el mouse
 document.addEventListener('mousedown', function(evento) {
-    posX = evento.offsetX;
-    posY = evento.offsetY;
+    posX3 = evento.offsetX;
+    posY3 = evento.offsetY;
     mousePresionado = true;
 });
 
@@ -110,10 +112,10 @@ d3.addEventListener('mousemove', function(evento) {
         var nuevaPosX = evento.offsetX;
         var nuevaPosY = evento.offsetY;
         color = getColorArcoiris(i)
-        dibujarLinea(color, posX, posY, nuevaPosX, nuevaPosY, lienzo3);
+        dibujarLinea(color, posX3, posY3, nuevaPosX, nuevaPosY, lienzo3);
         i++
-        posX = nuevaPosX;
-        posY = nuevaPosY;
+        posX3 = nuevaPosX;
+        posY3 = nuevaPosY;
     }
 });
 
@@ -124,41 +126,38 @@ d3.addEventListener('mouseup', function() {
 
 // PARA MOBILES - Función para detectar la pulsación táctil en la pantalla -------------
 
-
-const d4 = document.getElementById("dibujo_con_mouse_touch");
-const lienzo4 = d4.getContext("2d");
 let isDrawing = false;
-    
-// Eventos de escucha táctiles en el area canvas adecuada
 
-d4.addEventListener("touchstart", startDrawing);
-d4.addEventListener("touchmove", draw);
-d4.addEventListener("touchend", stopDrawing);
+d3.addEventListener("touchstart", startDrawing);
+d3.addEventListener("touchmove", draw);
+d3.addEventListener("touchend", stopDrawing);
 
 // Función para comenzar el dibujo
 function startDrawing(event) {
+    console.log('entre a startDrawing')
     isDrawing = true;
-    const x = event.touches[0].clientX - d4.offsetLeft;
-    const y = event.touches[0].clientY - d4.offsetTop;
-    lienzo4.beginPath();
-    lienzo4.moveTo(x, y);
+    const x = event.touches[0].clientX - d3.offsetLeft;
+    const y = event.touches[0].clientY - d3.offsetTop;
+    lienzo3.beginPath();
+    lienzo3.moveTo(x, y);
+    console.log('entre a startDrawing', x, y)
 }
 
 // Función para dibujar la línea
 function draw(event) {
     if (isDrawing) {
-        const x = event.touches[0].clientX - d4.offsetLeft;
-        const y = event.touches[0].clientY - d4.offsetTop;
-        lienzo4.lineTo(x, y);
-        lienzo4.stroke();
-        color = getColorArcoiris(i)
-        lienzo4.strokeStyle = color;
+        const x = event.touches[0].clientX - d3.offsetLeft;
+        const y = event.touches[0].clientY - d3.offsetTop;
+        lienzo3.lineTo(x, y);
+        lienzo3.stroke();
+        lienzo3.strokeStyle = color;
+        console.log('entre a isDrawing', x, y)
     }
-    i++
 }
 
 // Función para detener el dibujo
 function stopDrawing() {
     isDrawing = false;
-    lienzo4.closePath();
+    lienzo3.closePath();
+    console.log('entre a stopDrawing')
 }

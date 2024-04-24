@@ -109,7 +109,7 @@ document.addEventListener('touchstart', function(evento) {
 
     // Dibujamos la línea
     color = getColorArcoiris(i);
-    dibujarLinea(color, posX, posY, posX + (paso * direccionX), posY + (paso * direccionY), lienzo2);
+    dibujarLinea(color, posX, posY, posX + (paso * direccionX), posY + (paso * direccionY), lienzo3);
     i++;
     posX += paso * direccionX;
     posY += paso * direccionY;

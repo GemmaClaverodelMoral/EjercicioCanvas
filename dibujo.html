@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujo con CANVAS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Dibujo en canvas</h1>
+    <div id="contenedor">
+        <div id="automatico" class="recuadro_de_dibujo">
+            <label for="texto_num_lineas">¿Cuantas lineas quieres? :</label>
+            <input type="text" id="texto_num_lineas"/>
+            <input type="button" value="OK" id="boton">
+            <p></p>
+            <canvas width="300" height="300" id="dibujo_automatico_con_lineas"></canvas>
+        </div>
+        <div id="con_teclas" class="recuadro_de_dibujo">
+            <p>Con las flechas del teclado ⬆️➡️⬇️⬅️</p>
+            <canvas width="300" height="300" id="area_de_dibujo"></canvas>
+        </div>
+        <div id="con_mouse" class="recuadro_de_dibujo">
+            <p>Usa tu mouse sobre el recuadro para dibujar</p>
+            <canvas width="300" height="300" id="dibujo_con_mouse"></canvas>
+        </div>
+        
+    </div>
+    <script src="dibujo.js"></script>
+</body>
+</html>

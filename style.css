@@ -1,0 +1,26 @@
+body, h1, p {
+    background-color: black;
+    color:white;
+    font-family: Helvetica, sans-serif;
+}
+canvas {
+    border: 1px solid grey;
+}
+#contenedor {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: first baseline;
+}
+
+input {
+    width: 40px;
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 480px) {
+    #contenedor {
+        flex-direction: column; /* Cambiamos la dirección a columna */
+        align-items: center; /* Centramos los elementos en el eje vertical */
+    }
+}

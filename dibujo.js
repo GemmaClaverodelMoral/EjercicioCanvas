@@ -86,6 +86,43 @@ function dibujarTeclado(evento){
 
 }
 
+// PARA MOBILES - Función para detectar la pulsación táctil en la pantalla -------------
+
+document.addEventListener('touchstart', function(evento) {
+    // Obtenemos las coordenadas de la pulsación táctil
+    var touch = evento.touches[0];
+    var nuevaPosX = touch.pageX - d2.offsetLeft;
+    var nuevaPosY = touch.pageY - d2.offsetTop;
+
+    // Calculamos la dirección del movimiento
+    if (nuevaPosY < posY) {
+        direccionY = -1;
+    } else if (nuevaPosY > posY) {
+        direccionY = +1;
+    }
+
+    if (nuevaPosX < posX) {
+        direccionX = -1;
+    } else if (nuevaPosX > posX) {
+        direccionX = +1;
+    }
+
+    // Dibujamos la línea
+    color = getColorArcoiris(i);
+    dibujarLinea(color, posX, posY, posX + (paso * direccionX), posY + (paso * direccionY), lienzo2);
+    i++;
+    posX += paso * direccionX;
+    posY += paso * direccionY;
+    direccionX = 0; // Reiniciar la dirección horizontal
+    direccionY = 0; // Reiniciar la dirección vertical
+});
+
+// Función para evitar el desplazamiento predeterminado en dispositivos móviles
+document.addEventListener('touchmove', function(evento) {
+    evento.preventDefault();
+});
+
+
 // Dibujar con mouse ---------------------------
 
 var d3 = document.getElementById("dibujo_con_mouse");

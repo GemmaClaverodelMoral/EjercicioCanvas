@@ -166,3 +166,13 @@ function stopDrawing() {
     lienzo3.closePath();
     console.log('entre a stopDrawing')
 }
+
+// Boton de limpiar los canvas ----------------
+
+document.getElementById('limpiar').addEventListener('click', limpiarCanvas);
+function limpiarCanvas() {
+    lienzo1.clearRect(0, 0, d1.width, d1.height);
+    lienzo2.clearRect(0, 0, d2.width, d2.height);
+    lienzo3.clearRect(0, 0, d3.width, d3.height);
+}
+

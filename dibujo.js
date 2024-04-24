@@ -136,8 +136,8 @@ d3.addEventListener("touchend", stopDrawing);
 function startDrawing(event) {
     console.log('entre a startDrawing')
     isDrawing = true;
-    const x = event.touches[0].clientX - d3.offsetLeft;
-    const y = event.touches[0].clientY - d3.offsetTop;
+    const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
+    const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
     lienzo3.beginPath();
     lienzo3.moveTo(x, y);
     console.log('entre a startDrawing', x, y)
@@ -146,11 +146,11 @@ function startDrawing(event) {
 // Función para dibujar la línea
 function draw(event) {
     if (isDrawing) {
-        const x = event.touches[0].clientX - d3.offsetLeft;
-        const y = event.touches[0].clientY - d3.offsetTop;
+        const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
+        const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
         lienzo3.lineTo(x, y);
-        lienzo3.stroke();
         lienzo3.strokeStyle = color;
+        lienzo3.stroke();
         console.log('entre a isDrawing', x, y)
     }
 }

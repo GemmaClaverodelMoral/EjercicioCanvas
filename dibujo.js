@@ -138,6 +138,7 @@ function startDrawing(event) {
     isDrawing = true;
     const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
     const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
+    lienzo3.lineWidth = 5; // Grosor de 5 píxeles
     lienzo3.beginPath();
     lienzo3.moveTo(x, y);
     
@@ -149,6 +150,7 @@ function draw(event) {
         color = getColorArcoiris(i)
         const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
         const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
+        // Cambiar el grosor de la línea
         lienzo3.lineTo(x, y);
         lienzo3.strokeStyle = color;
         lienzo3.stroke();

@@ -88,7 +88,7 @@ function dibujarTeclado(evento){
 
 // Dibujar con mouse ---------------------------
 
-var d3 = document.getElementById("dibujo_con_mouse");
+var d3 = document.getElementById("dibujo_con_mouse_touch");
 var lienzo3 = d3.getContext("2d");
 
 var posX = 100
@@ -111,7 +111,7 @@ d3.addEventListener('mousemove', function(evento) {
         var nuevaPosY = evento.offsetY;
         color = getColorArcoiris(i)
         dibujarLinea(color, posX, posY, nuevaPosX, nuevaPosY, lienzo3);
-        i += 1
+        i++
         posX = nuevaPosX;
         posY = nuevaPosY;
     }
@@ -124,36 +124,41 @@ d3.addEventListener('mouseup', function() {
 
 // PARA MOBILES - Función para detectar la pulsación táctil en la pantalla -------------
 
-document.addEventListener('touchstart', function(evento) {
-    // Obtenemos las coordenadas de la pulsación táctil
-    var touch = evento.touches[0];
-    var nuevaPosX = touch.pageX - d3.offsetLeft;
-    var nuevaPosY = touch.pageY - d3.offsetTop;
 
-    // Calculamos la dirección del movimiento
-    if (nuevaPosY < posY) {
-        direccionY = -1;
-    } else if (nuevaPosY > posY) {
-        direccionY = +1;
+const d4 = document.getElementById("dibujo_con_mouse_touch");
+const lienzo4 = d4.getContext("2d");
+let isDrawing = false;
+    
+// Eventos de escucha táctiles en el area canvas adecuada
+
+d4.addEventListener("touchstart", startDrawing);
+d4.addEventListener("touchmove", draw);
+d4.addEventListener("touchend", stopDrawing);
+
+// Función para comenzar el dibujo
+function startDrawing(event) {
+    isDrawing = true;
+    const x = event.touches[0].clientX - d4.offsetLeft;
+    const y = event.touches[0].clientY - d4.offsetTop;
+    lienzo4.beginPath();
+    lienzo4.moveTo(x, y);
+}
+
+// Función para dibujar la línea
+function draw(event) {
+    if (isDrawing) {
+        const x = event.touches[0].clientX - d4.offsetLeft;
+        const y = event.touches[0].clientY - d4.offsetTop;
+        lienzo4.lineTo(x, y);
+        lienzo4.stroke();
+        color = getColorArcoiris(i)
+        lienzo4.strokeStyle = color;
     }
+    i++
+}
 
-    if (nuevaPosX < posX) {
-        direccionX = -1;
-    } else if (nuevaPosX > posX) {
-        direccionX = +1;
-    }
-
-    // Dibujamos la línea
-    color = getColorArcoiris(i);
-    dibujarLinea(color, posX, posY, posX + (paso * direccionX), posY + (paso * direccionY), lienzo3);
-    i++;
-    posX += paso * direccionX;
-    posY += paso * direccionY;
-    direccionX = 0; // Reiniciar la dirección horizontal
-    direccionY = 0; // Reiniciar la dirección vertical
-});
-
-// Función para evitar el desplazamiento predeterminado en dispositivos móviles
-document.addEventListener('touchmove', function(evento) {
-    evento.preventDefault();
-});
+// Función para detener el dibujo
+function stopDrawing() {
+    isDrawing = false;
+    lienzo4.closePath();
+}

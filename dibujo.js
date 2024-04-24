@@ -136,6 +136,7 @@ d3.addEventListener("touchend", stopDrawing);
 function startDrawing(event) {
     i=0
     isDrawing = true;
+    event.preventDefault();
     const x = event.touches[0].clientX - d3.getBoundingClientRect().left;
     const y = event.touches[0].clientY - d3.getBoundingClientRect().top;
     lienzo3.lineWidth = 5; // Grosor de 5 píxeles
@@ -154,13 +155,14 @@ function draw(event) {
         lienzo3.lineTo(x, y);
         lienzo3.strokeStyle = color;
         lienzo3.stroke();
-        i++
+        i += 10
     }
 }
 
 // Función para detener el dibujo
 function stopDrawing() {
     isDrawing = false;
+    event.preventDefault();
     lienzo3.closePath();
     console.log('entre a stopDrawing')
 }

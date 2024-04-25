@@ -60,11 +60,10 @@ var direccionY = 0
 document.addEventListener('keydown', dibujarTeclado);
 
 // Evento para prevenir el comportamiento predeterminado en dispositivos táctiles
-document.querySelectorAll('.imagen-flecha').forEach(function(imagen) {
-    imagen.addEventListener('touchstart', function(event) {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado
-        // Lógica para dibujar la línea aquí
-    });
+document.getElementById("con_flechas").addEventListener("touchend", function(event) {
+    event.preventDefault(); // Prevenir el comportamiento predeterminado
+    var codigoTecla = event.target.dataset.tecla; // Obtener el código de la tecla desde el atributo de datos
+    simularTecla(teclas[codigoTecla]);
 });
 
 function dibujarTeclado(evento){

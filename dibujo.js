@@ -167,7 +167,7 @@ function draw(event) {
         lienzo3.lineTo(x, y);
         lienzo3.strokeStyle = color;
         lienzo3.stroke();
-        i += 10
+        i += 5
     }
 }
 

@@ -1,13 +1,13 @@
 # Ejercicio de uso de CANVAS / mapas
 
-
+<img src="" width="600px" align="center">
 <a href="https://gemmaclaverodelmoral.github.io/EjercicioCanvas/" target="_blank">Enlace a página de la Practica de CANVAS</a>
 
-1er mapa: se pinta una fugura geometrica con lineas
-2do mapa: se pinta fugura con lineas succesivas usando: 
+### 1er mapa: se pinta una fugura geometrica con lineas
+### 2do mapa: se pinta fugura con lineas succesivas usando: 
   - 🖥️ COMPUTADOR: Presion en las teclas del teclado
   - 📲 CELULAR: Touch en unas imagenes de flechas ⬆️➡️⬇️⬅️
-3er mapa: se pintas lineas curvas.
+### 3er mapa: se pintas lineas curvas.
   - 🖥️ COMPUTADOR: Con el mouse. 
   - 📲 CELULAR: Con el dedo.
 ## Generalidades:

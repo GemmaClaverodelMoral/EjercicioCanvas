@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Dibujo en canvas v 3.7</h1>
+    <h1>Dibujo en canvas v 4.0</h1>
     <div id="contenedor">
         <div id="automatico" class="recuadro_de_dibujo">
             <label for="texto_num_lineas">¿Cuantas lineas quieres? :</label>
@@ -17,7 +17,12 @@
             <canvas width="300" height="300" id="dibujo_automatico_con_lineas"></canvas>
         </div>
         <div id="con_teclas" class="recuadro_de_dibujo">
-            <p>Con las flechas del teclado ⬆️➡️⬇️⬅️</p>
+            <p id="con_flechas">Con las flechas del teclado
+                <span id="flecha_arriba">⬆️</span>
+                <span id="flecha_derecha">➡️</span>
+                <span id="flecha_abajo">⬇️</span>
+                <span id="flecha_izquierda">⬅️</span>
+            </p>
             <canvas width="300" height="300" id="area_de_dibujo"></canvas>
         </div>
         <div id="con_mouse" class="recuadro_de_dibujo">

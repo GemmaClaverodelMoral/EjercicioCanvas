@@ -41,7 +41,7 @@ function dibujarFigura() {
     }
 }
 
-// Dibujar con las teclas ⬆️➡️⬇️⬅️ ----------------------------------------------------
+// Dibujar con las teclas o en mobiles con click en las imagenes de las flechas ⬆️➡️⬇️⬅️ --------------
 
 var d2 = document.getElementById("area_de_dibujo");
 var lienzo2 = d2.getContext("2d");
@@ -96,14 +96,16 @@ var lienzo3 = d3.getContext("2d");
 var posX3 = 100
 var posY3 = 100
 var mousePresionado = false;
-var direccionX = 0
-var direccionY = 0
+i = 0;
+var mouseDentroCanvas = false; // Variable para indicar si el mouse está dentro del canvas
 
 // Función para iniciar el dibujo cuando se presiona el mouse
 document.addEventListener('mousedown', function(evento) {
-    posX3 = evento.offsetX;
-    posY3 = evento.offsetY;
-    mousePresionado = true;
+    if (mouseDentroCanvas) {
+        posX3 = evento.offsetX;
+        posY3 = evento.offsetY;
+        mousePresionado = true;
+    }
 });
 
 // Función para dibujar mientras se mueve el mouse (si el botón del mouse está presionado)
@@ -122,6 +124,16 @@ d3.addEventListener('mousemove', function(evento) {
 // Función para finalizar el dibujo al soltar el mouse
 d3.addEventListener('mouseup', function() {
     mousePresionado = false;
+});
+
+// Función para detectar cuando el mouse entra en el canvas
+d3.addEventListener('mouseenter', function() {
+    mouseDentroCanvas = true;
+});
+
+// Función para detectar cuando el mouse sale del canvas
+d3.addEventListener('mouseleave', function() {
+    mouseDentroCanvas = false;
 });
 
 // PARA MOBILES - Función para detectar la pulsación táctil en la pantalla -------------
@@ -167,6 +179,40 @@ function stopDrawing() {
     console.log('entre a stopDrawing')
 }
 
+
+// SImulando las teclas de flecha con los dibujitos de flecha
+
+// Obtener las etiquetas <span> de las flechas
+var flechaArriba = document.getElementById("flecha_arriba");
+var flechaDerecha = document.getElementById("flecha_derecha");
+var flechaAbajo = document.getElementById("flecha_abajo");
+var flechaIzquierda = document.getElementById("flecha_izquierda");
+
+
+// Eventos de clic para las flechas
+flechaArriba.addEventListener("mousedown", function() {
+    simularTecla(teclas.UP);
+});
+
+flechaDerecha.addEventListener("mousedown", function() {
+    simularTecla(teclas.RIGHT);
+});
+
+flechaAbajo.addEventListener("mousedown", function() {
+    simularTecla(teclas.DOWN);
+});
+
+flechaIzquierda.addEventListener("mousedown", function() {
+    simularTecla(teclas.LEFT);
+});
+
+// Función para simular la presión de una tecla
+function simularTecla(codigoTecla) {
+    var evento = new Event("keydown");
+    evento.keyCode = codigoTecla;
+    document.dispatchEvent(evento);
+}
+
 // Boton de limpiar los canvas ----------------
 
 document.getElementById('limpiar').addEventListener('click', limpiarCanvas);
@@ -175,4 +221,8 @@ function limpiarCanvas() {
     lienzo2.clearRect(0, 0, d2.width, d2.height);
     lienzo3.clearRect(0, 0, d3.width, d3.height);
 }
+
+document.getElementById("con_flechas").addEventListener("dblclick", function(event) {
+    event.preventDefault(); // Evita que se seleccione el texto al hacer doble clic
+});
 

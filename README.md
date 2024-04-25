@@ -1,6 +1,6 @@
 # Ejercicio de uso de CANVAS / mapas
 
-[Enlace a página de la Practica de CANVAS ](https://gemmaclaverodelmoral.github.io/EjercicioCanvas/ "Practica Canvas"){:target="_blank"}
+[Enlace a página de la Practica de CANVAS ](https://gemmaclaverodelmoral.github.io/EjercicioCanvas/ "Practica Canvas")
 
 1er mapa: se pinta una fugura geometrica con lineas
 2do mapa: se pinta fugura con lineas succesivas usando: 
@@ -19,4 +19,6 @@ Se practica la escucha de diferentes eventos
 
 ### Ver tambien el repositori de la granja que contiene otras implementaciones de CANVAS con imagenes estaticas y dinamicas sobre el mismo.
 [GRANJA] - {falta link]
+
+
                                                         

@@ -1,6 +1,6 @@
 # Ejercicio de uso de CANVAS / mapas
 
-<img src="" width="600px" align="center">
+<img src="https://github.com/GemmaClaverodelMoral/EjercicioCanvas/blob/main/Dibujar%20CANVAS%20-%20Automatico%20-%20flechas%20teclado%20-%20Mouse%20o%20touch.png" width="600px" align="center">
 <a href="https://gemmaclaverodelmoral.github.io/EjercicioCanvas/" target="_blank">Enlace a página de la Practica de CANVAS</a>
 
 ### 1er mapa: se pinta una fugura geometrica con lineas

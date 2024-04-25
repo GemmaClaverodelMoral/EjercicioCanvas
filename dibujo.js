@@ -59,6 +59,13 @@ var direccionY = 0
 
 document.addEventListener('keydown', dibujarTeclado);
 
+// Evento para prevenir el comportamiento predeterminado en dispositivos táctiles
+document.querySelectorAll('.imagen-flecha').forEach(function(imagen) {
+    imagen.addEventListener('touchstart', function(event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado
+        // Lógica para dibujar la línea aquí
+    });
+});
 
 function dibujarTeclado(evento){
     console.log("entre a pintar con teclado")

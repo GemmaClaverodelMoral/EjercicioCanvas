@@ -1,5 +1,6 @@
 # Ejercicio de uso de CANVAS / mapas
 <img src=
+URL: https://gemmaclaverodelmoral.github.io/EjercicioCanvas/
 1er mapa: se pinta una fugura geometrica con lineas
 2do mapa: se pinta fugura con lineas succesivas usando: 
   - 🖥️ COMPUTADOR: Presion en las teclas del teclado
